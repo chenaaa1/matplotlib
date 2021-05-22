@@ -1,0 +1,10 @@
+c代表Class:类
+m代表Method:类实例方法
+F代表Function:函数
+f代表Field:类属性，域
+v代表Variable:变量
+p代表Property:python内置函数
+p代表Parameter：参数
+<>代表Element:元素
+Directory:目录
+Package:包

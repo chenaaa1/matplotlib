@@ -1,0 +1,42 @@
+from random import choice
+# 每次决策时都使用模块random中的choice来决定使用哪种选择
+
+
+class RandomWalk:
+    """一个随机生成漫步数据的类"""
+
+    def __init__(self, num_points=5000):
+        """初始化随机漫步的属性"""
+        self.num_points = num_points
+
+        # 所有随机漫步都始于（0，0）
+        # 创建2个用于存储x和y值的列表
+        self.x_values = [0]
+        self.y_values = [0]
+
+    def fill_walk(self):
+        """ 计算随机漫步包含的所有点"""
+
+        # 不断漫步，直到列表达到指定的长度
+        while len(self.x_values) < self.num_points:
+
+            # 决定前进方向以及沿这个方向前进的距离
+            x_direction = choice([1, -1])  # 向右走为1，左为-1
+
+            x_distance = choice([0, 1, 2, 3, 4])    # 决定走多远
+            x_step = x_direction * x_distance   # 移动距离为方向乘步伐
+
+            y_direction = choice([1, -1])
+            y_distance = choice([0, 1, 2, 3, 4])
+            y_step = y_direction *  y_distance
+
+            # 拒绝原地踏步
+            if x_step == 0 or y_step == 0:
+                continue
+
+            # 计算下一个点的x值和y值
+            x = self.x_values[-1] + x_step
+            y = self.y_values[-1] + y_step
+
+            self.x_values.append(x)
+            self.y_values.append(y)
